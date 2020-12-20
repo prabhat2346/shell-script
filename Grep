@@ -1,0 +1,98 @@
+####grep command#######
+
+search a string in a given file
+itadmin@prabhat:~$ vim grep.sh
+itadmin@prabhat:~$ grep "ITP" grep.sh   // always use quotation for seaching string
+I worked on ITP project
+
+2.  we can search similar string from multiple file at a time
+ grep " Acuuhealth" grep.sh grep1.sh 
+grep.sh:Also for Acuuhealth
+grep1.sh: Acuuhealth is aws based
+
+3. grep "Acuuhealth" *
+show all Acuuhealth in current path
+
+
+4. syntax
+grep options "string/pattern" file1/file2
+
+cat file1/file2 | grep options "string/pattern" file1/file2
+
+Basic options "
+-i.-w,-v,-o,-n,-c,-A,-B,-C,-r,-l,-h
+-i // ignore case sensitive means either capital or small
+e.g grep -i " Acuuhealth" grep.sh grep1.sh  // accuhealt/Accuhealth
+
+-w // To match a whole word exactl same
+grep -w "line" file.sh
+
+-v // Tp print lines which are not having searching string  
+
+-o // To print matching string not whole lines
+-n // To display matched lines number
+-c // To display matched number of lines
+-A // To display N lines after matching
+-B // To display N lines before match
+-C // To display N lines around match
+-r // to search under current directory or sub-directory
+-l // To dislplay only file names
+-h // To hide files
+
+
+#########command | grep ################
+httpd -v | grep "version"
+
+
+
+#########Advanced options#############
+-f,-e,-E
+
+-f // put your searching string in a file and then serch with -f options.
+itadmin@prabhat:~$ vim grep.sh 
+itadmin@prabhat:~$ vim itp.sh    // inside this fie ITP is written
+itadmin@prabhat:~$ grep -f itp.sh grep.sh 
+I worked on ITP project
+
+
+-e // search multiple string at a time
+grep -e "ITP" -e "Acuuhealth" grep.sh 
+I worked on ITP project
+Also for Acuuhealth
+
+-E   // pattern/more than one string
+ grep -E "ITP|Acuuhealth" grep.sh 
+I worked on ITP project
+Also for Acuuhealth
+
+
+rules for pattern
+
+1 sy|xc
+2.^xy  //matched lines starting with xy
+3.  xyz$ // Matches lines starting with xyz
+4. ^$  // Match for lines which are having empty
+5. \ //  To remove special purpose of any symbol e.g ^,$
+6 . // Matches any one character
+grep -E "A........h" grep.sh  // i put 9 times dot . b/w A to h\
+Also for Acuuhealth
+
+\. // Print lines which are having dot(.)
+\b  // Matches string after that having space
+b\   // space befire nacthing string
+? // /it?  means print lines with i with t, 0=<t<=1
+
+*  // >=0
+[xyz] // Matchhes lines which are having x or y z
+[a-d] // 
+^[abc]	 // starting with abc
+[^abc]  // Not starting with abc
+
+
+
+[[:space:]]  // print line which are havinf space
+[[:digit:]]   // Which are having digit(1,2,3,4,454)
+[[:lower:]]
+[[:upper:]]
+[[:aplha:]]
+[[:alphanum:]]

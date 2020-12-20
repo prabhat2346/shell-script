@@ -1,0 +1,61 @@
+####Extreact part of each line from file##########
+#####character position/byte position#######
+
+options : -c/-b  // use any one
+positions : 2,3,4,5
+range of positions : 3-7,6-10
+cut -c 1 /etc/passwd    // -c for character
+
+#####delimeter/field seperator#####
+tab is default field seperator for cut
+
+cut -f 2 cut.sh  // sirf tab ke liye work , space waalon ke liye 
+sh
+
+girl
+
+two
+
+
+itadmin@prabhat:~$ cat cut.sh 
+ram	sh	rm
+
+boy	girl	ladka
+
+three	two	one
+
+
+#######colon : as a filed seperator########
+
+-d ':'
+
+cut -d ':' -f 1 /etc/passwd
+
+cut -d ':' -f 1,4 /etc/passwd
+
+cut -d ':' -f 1,4 /etc/passwd --output-delimiter=" "
+root 0
+daemon 1
+bin 2
+sys 3
+sync 65534
+games 60
+man 12
+lp 7
+
+
+httpd -v | grep -E "version" | cut -d '/' -f2 -d '' -f 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
