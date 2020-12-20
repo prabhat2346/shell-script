@@ -1,0 +1,46 @@
+sudo chown -R itadmin:itadmin /var/lib/jenkins 
+
+
+
+sudo chown -R itadmin:itadmin /var/cache/jenkins
+
+
+sudo chown -R itadmin:itadmin /var/log/jenkins
+
+
+1. cp .kube/config file to jenkins user
+2 change jenkins_usr name inside /etc/default/jenkins
+put jenkins to itadmin
+ then run above three commands
+
+
+# ssh-keygen
+cp id_rsa.pub to your github/// setting /RSA/ add new ssh
+now clone ssh wala from github.
+
+
+cat /etc/group
+see usermod group
+
+sudo chmod 777 /var/run/docker.sock
+
+
+git clone git@github.com:prabhat2346/build-and-run-spring-boot-with-docker.git
+
+vim Jenkinsfile
+
+git add -A
+git commit -m "sfjk"
+git push
+
+
+
+
+
+
+
+
+
+
+
+
