@@ -36,8 +36,15 @@ git push
 docker run --name mycontainer -p 8080:8080 -p 50000:50000 -d -it -u root -v /usr/bin/docker:/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
 
 
+git clone  https://github.com/gdo-globaldevops-kubernetes/sre-grafana-dashboards.git
+git checkout -b feature/dr5-697
+git branch
 
-
+ git add -A
+ git status
+ git commit -m "added data in jason for dr-dashboard"
+ git status
+ git push origin feature/dr5-697
 
 
 
