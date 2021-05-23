@@ -101,6 +101,16 @@ a="2 b="2
 
 
 
+For example :- 
+sudo apt list --upgradable | awk -F [ '{print $1}' | awk -F all '{print $1}' |  awk -F amd64 '{print $1}' | sed 's/focal-updates/=/' | sed 's/\ //g'
+sudo apt list --upgradable | cut -d [ -f 1 | cut -d ' ' -f2
+
+
+
+
+
+
+
 
 
 
