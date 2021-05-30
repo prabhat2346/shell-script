@@ -30,8 +30,25 @@ three	two	one
 -d ':'
 
 cut -d ':' -f 1 /etc/passwd
+# prabhat.ranjan@prabhatr:~$ cut -d ':' -f 1 /etc/passwd
+root
+daemon
+bin
+sys
+sync
+...
+...
+#
 
 cut -d ':' -f 1,4 /etc/passwd
+# prabhat.ranjan@prabhatr:~$ cut -d ':' -f 1,4 /etc/passwd
+root:0
+daemon:1
+bin:2
+sys:3
+sync:65534
+games:60
+#
 
 cut -d ':' -f 1,4 /etc/passwd --output-delimiter=" "
 root 0
