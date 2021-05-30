@@ -35,7 +35,7 @@ git push
  whereis docker
 docker run --name mycontainer -p 8080:8080 -p 50000:50000 -d -it -u root -v /usr/bin/docker:/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
 
-
+# Best practice is 1st do git clone and then create new branch .
 git clone  https://github.com/gdo-globaldevops-kubernetes/sre-grafana-dashboards.git
 git checkout -b feature/dr5-697
 git branch
