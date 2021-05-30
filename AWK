@@ -13,7 +13,78 @@ e.g
 awk 'NR==3 { print $2 }' /etc/passwd
 awk 'NR>=3 { print $2 }' /etc/passwd   // all lines from 3, 4, 5,6,...
 here NR==3 is the 3rd line
-$2 is second filed of 3rd line.     
+$2 is second filed of 3rd line. 
+$0 :- Tp print whole line.
+prabhat.ranjan@prabhatr:~$ awk -F ':' 'NR==3 {print $0}' /etc/passwd  
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+prabhat.ranjan@prabhatr:~$ awk -F ':' 'NR==3 {print $1}' /etc/passwd
+bin
+prabhat.ranjan@prabhatr:~$ awk -F ':' 'NR==3 {print $2}' /etc/passwd
+x
+prabhat.ranjan@prabhatr:~$ awk -F ':' 'NR==3 {print $3}' /etc/passwd
+2
+prabhat.ranjan@prabhatr:~$ awk -F ':' 'NR==3 {print $4}' /etc/passwd
+2
+prabhat.ranjan@prabhatr:~$ awk -F ':' 'NR==3 {print $5}' /etc/passwd
+bin
+prabhat.ranjan@prabhatr:~$ awk -F ':' 'NR==3 {print $6}' /etc/passwd
+/bin
+prabhat.ranjan@prabhatr:~$ awk -F ':' 'NR==3 {print $7}' /etc/passwd
+/usr/sbin/nologin
+prabhat.ranjan@prabhatr:~$ awk -F ':' 'NR==3 {print $8}' /etc/passwd
+
+prabhat.ranjan@prabhatr:~$ 
+######### Top five lines ############
+prabhat.ranjan@prabhatr:~$ awk 'NR==1 {print $1} NR==2 {print $1} NR==3 {print $1} NR==4 {print $1} NR==5 {print $1}' /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+prabhat.ranjan@prabhatr:~$ 
+####################
+prabhat.ranjan@prabhatr:~$ awk 'NR==1 {print $1} NR==2 {print $1} NR==3 {print $1} NR==4 {print $1} NR==5 {print $1}' /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+prabhat.ranjan@prabhatr:~$ awk -F ':' 'NR==1 {print $1} NR==2 {print $1} NR==3 {print $1} NR==4 {print $1} NR==5 {print $1}' /etc/passwd
+root
+daemon
+bin
+sys
+sync
+prabhat.ranjan@prabhatr:~$ awk -F ':' 'NR==1 {print $2} NR==2 {print $2} NR==3 {print $2} NR==4 {print $2} NR==5 {print $2}' /etc/passwd
+x
+x
+x
+x
+x
+prabhat.ranjan@prabhatr:~$ awk -F ':' 'NR==1 {print $5} NR==2 {print $5} NR==3 {print $5} NR==4 {print $5} NR==5 {print $5}' /etc/passwd
+root
+daemon
+bin
+sys
+sync
+prabhat.ranjan@prabhatr:~$ awk -F ':' 'NR==1 {print $7} NR==2 {print $7} NR==3 {print $7} NR==4 {print $7} NR==5 {print $7}' /etc/passwd
+/bin/bash
+/usr/sbin/nologin
+/usr/sbin/nologin
+/usr/sbin/nologin
+/bin/sync
+prabhat.ranjan@prabhatr:~$ 
+
+
+############ used filed seperaor / ##########
+prabhat.ranjan@prabhatr:~$ awk -F '/' 'NR==1 {print $1} NR==2 {print $1} NR==3 {print $1} NR==4 {print $1} NR==5 {print $1}' /etc/passwd
+root:x:0:0:root:
+daemon:x:1:1:daemon:
+bin:x:2:2:bin:
+sys:x:3:3:sys:
+sync:x:4:65534:sync:
+
+
 
 
 optiins
