@@ -1,0 +1,87 @@
+set -e # The -e tells Bash to stop immediately if one of the statements it executes has an exit-code different from 0.
+
+prabhat.ranjan@prabhatr:~$ cat while1.sh 
+#!/bin/sh
+a=0
+while [ "$a" -lt 10 ]   ### while loop will execute untill condition is true.
+do
+   echo "$a"
+   a=`expr $a + 1`
+done
+
+prabhat.ranjan@prabhatr:~$ ./while1.sh 
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+#####
+echo -n options:-
+prabhat.ranjan@prabhatr:~$ cat while1.sh 
+#!/bin/sh
+
+a=0
+while [ "$a" -lt 10 ]    # this is loop1
+do
+   echo -n "$a"        # Print the values
+   a=`expr $a + 1`    #  increment the value
+done
+
+prabhat.ranjan@prabhatr:~$ ./while1.sh 
+0123456789prabhat.ranjan@prabhatr:~$ 
+
+###### Break statement ##########
+prabhat.ranjan@prabhatr:~$ cat while_break.sh 
+#!/bin/sh
+a=0
+while [ $a -lt 10 ]
+do
+   echo $a
+   if [ $a -eq 5 ]
+   then
+      break
+   fi
+   a=`expr $a + 1`
+done
+
+prabhat.ranjan@prabhatr:~$ bash while_break.sh 
+0
+1
+2
+3
+4
+5
+############ Continue ststtement ############
+prabhat.ranjan@prabhatr:~$ cat continue.sh 
+#!/bin/sh
+
+NUMS="1 2 3 4 5 6 7"
+
+for NUM in $NUMS
+do
+   Q=`expr $NUM % 2`
+   if [ $Q -eq 0 ]
+   then
+      echo "Number is an even number!!"
+      continue
+   fi
+   echo "Found odd number"
+done
+prabhat.ranjan@prabhatr:~$ bash con
+config.hcl   conn.yaml    continue.sh  
+prabhat.ranjan@prabhatr:~$ bash continue.sh 
+Found odd number
+Number is an even number!!
+Found odd number
+Number is an even number!!
+Found odd number
+Number is an even number!!
+Found odd number
+prabhat.ranjan@prabhatr:~$ 
+
+
