@@ -1,5 +1,30 @@
 set -e # The -e tells Bash to stop immediately if one of the statements it executes has an exit-code different from 0.
 
+####### for loop with if ###########
+# write a shell script to print 1 to 10
+<<com
+NUM="1 2 3 4 5 6 7 8 9 10"
+for var in $NUM
+do
+  echo $var     
+done
+com
+
+
+# Now i want to break when NUM=5
+NUM="1 2 3 4 5 6 7 8 9 10"
+for var in $NUM
+do
+    if [ $var == 5 ]
+    then
+          break
+    fi
+    echo $var
+
+done
+
+~           
+
 prabhat.ranjan@prabhatr:~$ cat while1.sh 
 #!/bin/sh
 a=0
