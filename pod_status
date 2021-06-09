@@ -1,0 +1,24 @@
+#!/bin/bash
+sleep 10
+x=$(kubectl -n NamespaceUser get pods | grep init | awk '{print $3}')
+echo $x
+if [ -n "$x" -a "$x" != "Running" ]; then
+while [ "$x" != "Running" ]
+do
+   sleep 10
+   y=$(kubectl -n NamespaceUser get pods | grep init | awk '{print $3}')
+   if [ ! -z "$y" ]; then
+       echo $y
+       x=$y
+       else
+               break
+   fi
+   echo $x
+done
+echo "Now init working fine"
+elif
+        [ ! -n "$x" ]; then
+        echo "pod is not running"
+else
+echo "init working fine"
+fi
