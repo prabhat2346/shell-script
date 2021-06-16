@@ -1,0 +1,30 @@
+#!/bin/sh
+pod_list=$(kubectl  get pods | grep 2h | grep $1 | awk '{print $1}')
+for podname in ${pod_list[@]};
+do
+echo $podname
+kubectl delete pod $podname
+done
+
+
+# kubectl get pods -n namespace | grep Evicted | awk '{print $1}' | xargs kubectl delete pod -n namespace
+# kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}} {{.metadata.creationTimestamp}}{{"\n"}}{{end}}' | awk '$2 <= "'$(date -d 'yesterday' -Ins --utc | sed 's/+0000/Z/')'" { print $1 }' | xargs --no-run-if-empty kubectl delete pod
+
+#####
+#!/bin/bash
+
+echo "cluster name"
+if [$clustername]
+read clustername
+echo "cluster is $clustername"
+kubectx $clustername
+echo "namespace"
+if [$namespace]
+read namespace
+echo "namespace is $namespace"
+delete=$(kubectl get pod -n $1 | grep -v '^NAME' | awk '{print $1}')
+echo "$delete" | while read deleteLine; do
+APIVER=`echo $deleteLine | cut -d '|' -f1`
+echo checking apiversions for $APIVER
+kubectl get pods -n $1 | grep Runing | awk '{print $1}' | xargs kubectl delete pod -n $1
+done
