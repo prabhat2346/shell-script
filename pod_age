@@ -28,3 +28,13 @@ APIVER=`echo $deleteLine | cut -d '|' -f1`
 echo checking apiversions for $APIVER
 kubectl get pods -n $1 | grep Runing | awk '{print $1}' | xargs kubectl delete pod -n $1
 done
+
+
+
+##########
+set -x
+
+for j in $(kubectl get jobs -o custom-columns=:.metadata.name)
+do
+    kubectl delete jobs $j &
+done
