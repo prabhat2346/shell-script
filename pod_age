@@ -38,3 +38,21 @@ for j in $(kubectl get jobs -o custom-columns=:.metadata.name)
 do
     kubectl delete jobs $j &
 done
+#################################
+#!/bin/bash
+while read clustername
+do
+        echo "$clustername"
+        kubectl config use-context $clustername
+        namespace_list=$(kubectl get ns | awk 'NR>=2 {print $1}')
+        for ns in ${namespace_list[@]};
+        do
+        pod_list=$(kubectl get pods -n $ns | grep -E "Pending|ContainerCreating"| awk '{print $1}')
+        for podname in ${pod_list[@]};
+        do
+            echo "$podname"
+            kubectl delete pod $podname -n $ns
+        done
+        done
+done < cluster-list.txt
+~                         
